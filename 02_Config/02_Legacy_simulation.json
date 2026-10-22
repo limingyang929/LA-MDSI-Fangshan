@@ -1,0 +1,124 @@
+{
+  "format": "JSON subset of YAML 1.2; read with Python json without installing dependencies",
+  "historical_replay": {
+    "source": "q1_submission_20260825/scripts/04_dsi_simulation_validation.py",
+    "grid_side": 30,
+    "n": 900,
+    "coordinates": "integer regular grid x,y in [0,29]; unitless simulation coordinates, not Fangshan metres",
+    "repetitions_per_scenario": 100,
+    "generator_seed_rule": "20260824 + scenario_index*10000 + repetition (repetition 1..100)",
+    "spatial_process": "standardized gaussian_filter of iid N(0,1) field, sigma=3.0, mode=reflect",
+    "heterogeneity": "five x bands via digitize(x,[6,12,18,24]); standardized [-1.3,0.7,-0.5,1.4,-0.3] template",
+    "scenarios": {
+      "null": [
+        0.0,
+        0.0,
+        0.2
+      ],
+      "weak_mixed": [
+        0.3,
+        0.3,
+        0.2
+      ],
+      "autocorrelation_only": [
+        1.2,
+        0.0,
+        0.2
+      ],
+      "heterogeneity_only": [
+        0.0,
+        1.2,
+        0.2
+      ],
+      "mixed": [
+        1.2,
+        1.2,
+        0.2
+      ],
+      "mixed_rare": [
+        1.2,
+        1.2,
+        0.05
+      ]
+    },
+    "scenario_parameter_order": [
+      "spatial_strength",
+      "heterogeneity_strength",
+      "target_prevalence"
+    ],
+    "response": "conditionally independent Bernoulli(true_probability); intercept calibrated on known generating probabilities by 80 bisection steps on [-20,20]",
+    "noise": "Bernoulli response noise; no separate measurement-noise amplitude in this inherited protocol",
+    "capture_fractions": [
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "prediction": "target_prevalence + capture*(true_probability-target_prevalence), clipped [1e-6,1-1e-6]",
+    "capture_meaning": "fraction of probability signal retained by controlled oracle predictions; NOT observation thinning or inventory missingness",
+    "AUC_control": "positive capture is an affine monotone transform of the same true probabilities, hence identical ranking/AUC; capture zero is constant score, AUC=0.5",
+    "permutations": 199,
+    "graph": "archived symmetric skip-nearest k8",
+    "historical_q_strata": "externally fixed five x bands",
+    "historical_ratio": "magnitude ratio; retain historical_theta_original_abs and historical_theta_centered separately from signed original R DSI formula",
+    "negative_controls": "null response-generating scenario and capture=0 in every scenario",
+    "independent_prediction_status": "oracle probabilities are specified from DGP without looking at the generated validation labels; these are construct-validity experiments, not trained-model forecast validation"
+  },
+  "new_design_LA_MDSI_extension": {
+    "label": "\u65b0\u8bbe\u8ba1\u6a21\u62df\u6269\u5c55\uff0c\u4e0d\u79f0\u539f LA-MDSI \u6a21\u62df\u590d\u73b0",
+    "reason": "Historical simulation does not contain train-only CART/K-means six combinations, R-DSI or S_theta",
+    "same_DGP_as_historical": true,
+    "predictor_columns_for_train_only_strata": [
+      "x",
+      "y",
+      "standardized_spatial_field",
+      "standardized_heterogeneity_template"
+    ],
+    "folds": 5,
+    "spatial_blocks": "6x6 grid cells (25 complete blocks), inherited from existing six-cell band boundaries; this partition is newly specified",
+    "splitter": "StratifiedGroupKFold(shuffle=True, random_state=generator_seed)",
+    "strata_fit": "CART and K-means fit on four covariates of training groups only; validation labels are not inputs",
+    "cart": {
+      "criterion": "entropy",
+      "max_depth": 8,
+      "min_samples_split": 100,
+      "min_samples_leaf": 50,
+      "ccp_alpha": 0.001
+    },
+    "kmeans": {
+      "k": 5,
+      "starts": 5,
+      "maximum_iterations": 100,
+      "standardization": "training covariates only",
+      "rtol": 1e-06,
+      "atol": 1e-08,
+      "empty_cluster": "retain_old_center"
+    },
+    "neighborhoods": [
+      4,
+      8,
+      16,
+      32
+    ],
+    "graph_convention": "legacy skip-nearest symmetric binary, matching empirical diagnostic estimand",
+    "residuals": [
+      "raw",
+      "deviance",
+      "pearson"
+    ],
+    "denominator_epsilon": 1e-12,
+    "theta": "union-type 1-(1-eta_A)*(1-eta_H); not an AND measure",
+    "aggregation": "fold Q25 / 1-IQR on six finite values, then equal-fold means; require all five folds valid, no silent partial mean",
+    "identifiability": "199 response permutations per fold, four I tests and two q tests; ungated finite scores retained, gated summaries require all response tests in all folds",
+    "permutation_seed_rule": "generator_seed*100+fold",
+    "reported_predictive_metrics": "complete 900-observation oracle validation probabilities, identical for original DSI and LA-MDSI",
+    "monte_carlo_mean_CI": {
+      "bootstrap_repetitions": 10000,
+      "seed": 20260824,
+      "unit": "independently generated DGP repetitions, paired captures retained in raw data"
+    },
+    "known_target_interval_coverage": "conditional Bernoulli prevalence normal interval based on known sum p(1-p), not invented true theta targets",
+    "no_claim": "No observed missingness model, constant-AUC classifier fitting, new external event validation, or known positive-capture population theta coverage"
+  }
+}

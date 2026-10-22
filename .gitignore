@@ -1,0 +1,11 @@
+05_Outputs/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.joblib
+*.tif
+*.tiff
+*.log
+.DS_Store
+Thumbs.db

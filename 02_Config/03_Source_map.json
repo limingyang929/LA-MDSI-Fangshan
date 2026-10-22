@@ -1,0 +1,112 @@
+[
+  {
+    "module": "scientific_core",
+    "source_revision": "Paper/GNHR_three_experiments_69groups_20261006/scientific_core.py",
+    "adaptation": "Local paths and archival dependencies replaced; scientific routines retained."
+  },
+  {
+    "module": "graph_core",
+    "source_revision": "v2/NHESS_revision_20261008/run_simulation.py",
+    "adaptation": "Local paths and archival dependencies replaced; scientific routines retained."
+  },
+  {
+    "module": "model_core",
+    "source_revision": "Paper/GNHR_NHESS_20261002/scripts/run_strict_experiments.py",
+    "adaptation": "Local paths and archival dependencies replaced; scientific routines retained."
+  },
+  {
+    "module": "run_corrected_models",
+    "source_revision": "Paper/Data_training_validation_audit_20261010/run_corrected_models.py",
+    "adaptation": "Local paths and archival dependencies replaced; scientific routines retained."
+  },
+  {
+    "module": "run_corrected_diagnostics",
+    "source_revision": "Paper/Data_training_validation_audit_20261010/run_corrected_diagnostics.py",
+    "adaptation": "Local paths and archival dependencies replaced; scientific routines retained."
+  },
+  {
+    "module": "summarize_corrected_results",
+    "source_revision": "Paper/Data_training_validation_audit_20261010/summarize_corrected_results.py",
+    "adaptation": "Local paths and archival dependencies replaced; scientific routines retained."
+  },
+  {
+    "module": "common",
+    "source_revision": "Paper/Fig6_8_9_10_corrected_rerun_20261013/common.py",
+    "adaptation": "Local paths and archival dependencies replaced; scientific routines retained."
+  },
+  {
+    "module": "run_sweeps",
+    "source_revision": "Paper/Fig6_8_9_10_corrected_rerun_20261013/run_sweeps.py",
+    "adaptation": "Local paths and archival dependencies replaced; scientific routines retained."
+  },
+  {
+    "module": "run_scales",
+    "source_revision": "Paper/Fig6_8_9_10_corrected_rerun_20261013/run_scales.py",
+    "adaptation": "Local paths and archival dependencies replaced; scientific routines retained."
+  },
+  {
+    "module": "run_importance",
+    "source_revision": "Paper/Fig6_8_9_10_corrected_rerun_20261013/run_importance.py",
+    "adaptation": "Local paths and archival dependencies replaced; scientific routines retained."
+  },
+  {
+    "module": "summarize_results",
+    "source_revision": "Paper/Fig6_8_9_10_corrected_rerun_20261013/summarize_results.py",
+    "adaptation": "Local paths and archival dependencies replaced; scientific routines retained."
+  },
+  {
+    "module": "make_figures",
+    "source_revision": "Paper/Fig6_8_9_10_corrected_rerun_20261013/make_figures.py",
+    "adaptation": "Local paths and archival dependencies replaced; scientific routines retained."
+  },
+  {
+    "module": "run_experiment",
+    "source_revision": "Paper/outputs/reportability_sampling_cv_20261018/run_experiment.py",
+    "adaptation": "Local paths and archival dependencies replaced; scientific routines retained."
+  },
+  {
+    "module": "verify_experiment",
+    "source_revision": "Paper/outputs/reportability_sampling_cv_20261018/verify_experiment.py",
+    "adaptation": "Local paths and archival dependencies replaced; scientific routines retained."
+  },
+  {
+    "module": "summarize_simulation",
+    "source_revision": "Paper/outputs/reportability_sampling_cv_20261018/analyze_report.py",
+    "adaptation": "Local paths and archival dependencies replaced; scientific routines retained."
+  },
+  {
+    "module": "inspect_weak_signal",
+    "source_revision": "Paper/outputs/reportability_sampling_cv_20261018/inspect_weak_signal.py",
+    "adaptation": "Local paths and archival dependencies replaced; scientific routines retained."
+  },
+  {
+    "module": "run_replacement",
+    "source_revision": "Paper/outputs/new_simulation_replacement_20261019/run_replacement.py",
+    "adaptation": "Local paths and archival dependencies replaced; scientific routines retained."
+  },
+  {
+    "module": "legacy_simulation",
+    "source_revision": "Paper/theta_structure_dependence_20261010/source_snapshot/run_simulation.py",
+    "adaptation": "Local paths and archival dependencies replaced; scientific routines retained."
+  },
+  {
+    "module": "historical_core",
+    "source_revision": "Paper/theta_structure_dependence_20261010/source_snapshot/04_dsi_simulation_validation.py",
+    "adaptation": "Local paths and archival dependencies replaced; scientific routines retained."
+  },
+  {
+    "module": "run_dependence",
+    "source_revision": "Paper/theta_structure_dependence_20261010/run_dependence.py",
+    "adaptation": "Local paths and archival dependencies replaced; scientific routines retained."
+  },
+  {
+    "module": "six_setting_summaries",
+    "source_revision": "Paper/theta_structure_dependence_20261010/six_setting_summaries.py",
+    "adaptation": "Local paths and archival dependencies replaced; scientific routines retained."
+  },
+  {
+    "module": "make_outputs",
+    "source_revision": "Paper/theta_structure_dependence_20261010/make_outputs.py",
+    "adaptation": "Local paths and archival dependencies replaced; scientific routines retained."
+  }
+]
